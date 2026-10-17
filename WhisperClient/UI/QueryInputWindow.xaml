@@ -1,0 +1,76 @@
+<Window x:Class="WhisperClient.UI.QueryInputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ask Whisper" Width="460" Height="136" FontFamily="Segoe UI"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="Manual"
+        AllowsTransparency="True" Background="Transparent" Topmost="True" ShowInTaskbar="False"
+        PreviewKeyDown="OnPreviewKeyDown">
+    <Border Background="#FA181A20" CornerRadius="20" Padding="14" Margin="6"
+            BorderBrush="#FF363941" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="54"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="QueryTextBox" Padding="15,0" MaxLength="32768"
+                     Background="#FF24272E" Foreground="#FFF3F4F6" CaretBrush="White" FontSize="17"
+                     VerticalContentAlignment="Center" AutomationProperties.Name="Your question"
+                     ToolTip="Enter to ask · Esc to cancel">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="InputBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="#FF40444E" BorderThickness="1" CornerRadius="14">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock x:Name="Placeholder" Text="Ask Whisper…" Foreground="#FF949AA7"
+                                           Margin="{TemplateBinding Padding}" VerticalAlignment="Center"
+                                           IsHitTestVisible="False" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="InputBorder" Property="BorderBrush" Value="#FF8A9BBD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <CheckBox x:Name="IncludeScreen" Grid.Row="1" Content="Ask about my screen"
+                      IsChecked="False" Foreground="#FFC7CBD4" Margin="4,12,0,0" FontSize="13"
+                      AutomationProperties.Name="Include this monitor for this question"
+                      ToolTip="Fast app text when available; images for visual questions (slower). A walkthrough follows your target clicks on this monitor until Stop or Esc.">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal" Background="Transparent">
+                            <Border x:Name="Box" Width="18" Height="18" CornerRadius="5"
+                                    Background="#FF24272E" BorderBrush="#FF636B79" BorderThickness="1">
+                                <Path x:Name="Tick" Data="M 3,8 L 6,11 L 12,4" Stroke="#FF181A20"
+                                      StrokeThickness="2" Visibility="Collapsed" HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                            <ContentPresenter Margin="9,0,0,0" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Box" Property="Background" Value="#FFB4C8EF"/>
+                                <Setter TargetName="Box" Property="BorderBrush" Value="#FFB4C8EF"/>
+                                <Setter TargetName="Tick" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Box" Property="BorderBrush" Value="#FFDBE5F8"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Box" Property="BorderBrush" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Include="System.Net.Http" />
+    <Using Include="System.IO" />
+    <Compile Include="../../WhisperClient/Core/Guidance.cs" Link="Guidance.cs" />
+    <Compile Include="../../WhisperClient/Core/GuideClickObserver.cs" Link="GuideClickObserver.cs" />
+    <Compile Include="../../WhisperClient/Core/MonitorWindowPlacement.cs" Link="MonitorWindowPlacement.cs" />
+    <Compile Include="../../WhisperClient/UI/WalkthroughWindow.cs" Link="WalkthroughWindow.cs" />
+    <Compile Include="../../WhisperClient/UI/ShortcutHelpWindow.cs" Link="ShortcutHelpWindow.cs" />
+    <Compile Include="../../WhisperClient/Core/GlobalCommandHotkeys.cs" Link="GlobalCommandHotkeys.cs" />
+    <Compile Include="../../WhisperClient/Core/LocalAuthTokenProvider.cs" Link="LocalAuthTokenProvider.cs" />
+    <Compile Include="../../WhisperClient/Core/DesktopAccountClient.cs" Link="DesktopAccountClient.cs" />
+    <Compile Include="../../WhisperClient/Core/DisplayTopology.cs" Link="DisplayTopology.cs" />
+    <Compile Include="../../WhisperClient/Core/ScreenSnapshot.cs" Link="ScreenSnapshot.cs" />
+    <Compile Include="../../WhisperClient/Core/WebSocketTextAssembler.cs" Link="WebSocketTextAssembler.cs" />
+    <Compile Include="../../WhisperClient/Core/CaptureBounds.cs" Link="CaptureBounds.cs" />
+    <Compile Include="../../WhisperClient/Core/CapturePreviewGeometry.cs" Link="CapturePreviewGeometry.cs" />
+    <Compile Include="../../WhisperClient/Services/ScreenTextContextService.cs" Link="ScreenTextContextService.cs" />
+    <Compile Include="../../WhisperClient/Core/RuntimeReadiness.cs" Link="RuntimeReadiness.cs" />
+    <Compile Include="../../WhisperClient/Core/HighlightGeometry.cs" Link="HighlightGeometry.cs" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <Compile Include="../../WhisperClient/Core/AudioRecorderService.cs" Link="AudioRecorderService.cs" />
+    <Compile Include="../../WhisperClient/Core/WindowPlacement.cs" Link="WindowPlacement.cs" />
+    <Compile Include="../../WhisperClient/Core/InteractionLifetime.cs" Link="InteractionLifetime.cs" />
+    <Compile Include="../../WhisperClient/Core/UserSettings.cs" Link="UserSettings.cs" />
+    <Compile Include="../../WhisperClient/Core/WhisperRequestFactory.cs" Link="WhisperRequestFactory.cs" />
+    <Compile Include="../../WhisperClient/Models/WhisperModels.cs" Link="WhisperModels.cs" />
+    <Compile Include="../../WhisperClient/Core/WhisperSessionStateMachine.cs" Link="WhisperSessionStateMachine.cs" />
+  </ItemGroup>
+</Project>

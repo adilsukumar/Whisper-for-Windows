@@ -98,4 +98,3 @@ desktop account/signing gates are documented in
 [the verification guide](docs/23-vision-and-desktop-verification.md).
 
 Git is initialized on `main`. Generated `bin/` and `obj/` files, the local `.dotnet/` installation, installers, downloaded model weights, logs, databases, and secrets are ignored. Existing local artifacts may remain on disk but must never be committed; third-party binaries still need a verified acquisition and license-record process before release.
-

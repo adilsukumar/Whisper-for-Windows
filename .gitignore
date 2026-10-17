@@ -1,0 +1,46 @@
+# .NET
+**/bin/
+**/obj/
+.dotnet/
+*.user
+*.suo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Models, installers, and generated artifacts
+*.gguf
+*.onnx
+*.safetensors
+*.msi
+*Setup.exe
+/models/
+artifacts/
+dist/
+build/
+
+# Runtime data and secrets
+.env
+.env.*
+!.env.example
+*.log
+logs/
+crashes/
+diagnostics/
+*.db
+*.sqlite*
+*.token
+
+# IDE / OS
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
