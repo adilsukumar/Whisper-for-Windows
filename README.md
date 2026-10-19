@@ -1,29 +1,47 @@
-# Whisper for Windows
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/hero-mobile.svg"/><img src="assets/readme/hero.svg" width="100%" alt="Whisper for Windows — a Windows-native voice and screen assistant by Adil Sukumar. Developer prototype."/></picture></p>
 
-Whisper is a Windows-native, voice-first screen assistant that can understand what the user is looking at, point to the correct interface element, explain unfamiliar software, and—with explicit safeguards—perform actions on the user's behalf.
+<p align="center"><a href="#what-whisper-does">Overview</a> · <a href="#current-status">Current status</a> · <a href="#developer-setup">Developer setup</a> · <a href="#documentation">Documentation</a></p>
 
-> Status: local developer build, not a commercial release. Native overlay, hotkeys, consented monitor capture, mixed-DPI coordinate handling, cancellation, local STT/TTS and tested lightweight vision exist. Paid-policy desktop sign-in and backend entitlement checks compile and pass fixture tests, but live Google/billing deployment, signed installer, physical multi-monitor tests, reliable action execution and accessibility/OCR-first context remain release gates. See [release status](docs/25-release-status-and-account-enforcement.md).
+Whisper is my Windows-native assistant for asking questions about the software in front of you. It brings voice or text input together with consented screen context, spoken answers and on-screen guidance.
 
-## Product promise
+**Status: local developer build.** This repository is a working prototype, with important release requirements still open. It is not a commercial release or a finished, one-click installer.
 
-Whisper should feel like the most capable Windows expert sitting beside the user:
+## <img src="assets/readme/icon-voice.svg" width="30" height="30" alt=""/> What Whisper does
 
-- Ask naturally by voice or text.
-- Use the cursor, active window, UI Automation tree, OCR, and screenshot as context.
-- Receive a fast spoken answer with precise on-screen guidance.
-- Delegate safe tasks with previews and confirmations.
-- Choose Local Only, Automatic, or Cloud Allowed processing.
-- Install and work without manually configuring Python, model servers, or API keys.
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/capabilities-mobile.svg"/><img src="assets/readme/capabilities.svg" width="100%" alt="Ask naturally, add consented context, get guidance and stay in control."/></picture></p>
 
-## Non-goals
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/flow-mobile.svg"/><img src="assets/readme/flow.svg" width="100%" alt="Conceptual flow: ask by voice or text, provide consented screen context, and receive an answer with on-screen guidance."/></picture></p>
 
-- Bypassing Windows security controls or UAC.
-- Secretly recording the screen, microphone, or keystrokes.
-- Claiming exact UI coordinates from an ungrounded vision model.
-- Requiring high-end GPUs for the basic product experience.
-- Shipping an unrestricted autonomous agent before safe actions are reliable.
+## <img src="assets/readme/icon-status.svg" width="30" height="30" alt=""/> Current status
 
-## Quick start for developers
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/status-mobile.svg"/><img src="assets/readme/status.svg" width="100%" alt="Windows interface and local processing exist; important release requirements remain open."/></picture></p>
+
+<details>
+<summary><strong>Detailed status and verification</strong></summary>
+
+| Area | Current developer-build status |
+| --- | --- |
+| Windows interface | Native overlay, tray controls and prototype hotkeys exist. |
+| Screen context | Consented monitor capture and mixed-DPI coordinate handling exist; physical multi-monitor testing remains open. |
+| Local processing | Local speech-to-text, text-to-speech and tested lightweight vision are available in the developer setup. |
+| Turn control | Cancellation and pause/resume behavior are implemented. |
+| Reliable action execution | Still a release requirement, alongside accessibility/OCR-first context. |
+| Accounts and billing | Separate accounts work exists; live Google/billing deployment and desktop commercial enforcement remain release requirements. |
+| Distribution | Signed installer and a complete end-user installation experience remain open. |
+
+</details>
+
+See the [release-status document](docs/25-release-status-and-account-enforcement.md) and [verification guide](docs/23-vision-and-desktop-verification.md) for the detailed evidence and remaining work.
+
+## <img src="assets/readme/icon-architecture.svg" width="30" height="30" alt=""/> Under the hood
+
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/architecture-mobile.svg"/><img src="assets/readme/architecture.svg" width="100%" alt="Component map: WPF desktop client, Python runtime, Ollama and speech, plus the separate accounts service."/></picture></p>
+
+See the [accounts-service README](WhisperAccounts/README.md) for its implementation and release limitations.
+
+## <img src="assets/readme/icon-terminal.svg" width="30" height="30" alt=""/> Developer setup
+
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/environment-mobile.svg"/><img src="assets/readme/environment.svg" width="100%" alt="Python 3.11.9, .NET SDK 8.0.425, and Ollama. Developer prototype requirements."/></picture></p>
 
 Prerequisites currently include .NET 8, Python, and Ollama. These are prototype requirements and must not become end-user setup requirements.
 
@@ -61,28 +79,29 @@ After dependencies are installed, use the unified development entry point:
 .\dev.ps1 package-client
 ```
 
-Default prototype hotkeys:
-
-- `Ctrl+Space`: hold to talk.
-- `Ctrl+Shift+Space`: open text input.
-- `Escape`: dismiss the response and annotations.
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/hotkeys-mobile.svg"/><img src="assets/readme/hotkeys.svg" width="100%" alt="Ctrl+Space: hold to talk. Ctrl+Shift+Space: text input. Escape: dismiss."/></picture></p>
 
 The tray menu provides Ask, Pause/Resume, Settings, and Quit. Screen sharing is off by default: text questions have a per-question checkbox; voice questions use the explicit Settings preference. Settings also control spoken responses and reduced motion, and offer a read-only local runtime/model check. Pause cancels capture and active turns; resuming does not automatically record.
 
 The separate [accounts service](WhisperAccounts/README.md) implements Google-verified owner administration and complimentary lifetime grants. It has local automated security coverage, but is not deployed or wired into desktop commercial enforcement. Google OAuth configuration, production hosting, billing webhooks, desktop authentication, and independent security review remain launch gates.
 
-## Documentation map
+## <img src="assets/readme/icon-docs.svg" width="30" height="30" alt=""/> Documentation
 
-Start with [docs/README.md](docs/README.md). The most important working documents are:
+Start with the [documentation index](docs/README.md), or choose a path below.
 
-- [Product vision](docs/01_PRODUCT_VISION.md)
-- [Current-state audit](docs/02_CURRENT_STATE_AND_GAPS.md)
-- [Product requirements](docs/03_PRODUCT_REQUIREMENTS.md)
-- [Target architecture](docs/04_TARGET_ARCHITECTURE.md)
-- [Execution roadmap](docs/14_EXECUTION_ROADMAP.md)
-- [Definition of done](docs/15_DEFINITION_OF_DONE.md)
+<p align="center"><a href="docs/01_PRODUCT_VISION.md"><img src="assets/readme/doc-0.svg" width="430" alt="Product vision: The intended experience"/></a> <a href="docs/02_CURRENT_STATE_AND_GAPS.md"><img src="assets/readme/doc-1.svg" width="430" alt="Current-state audit: What exists and what is missing"/></a> <a href="docs/03_PRODUCT_REQUIREMENTS.md"><img src="assets/readme/doc-2.svg" width="430" alt="Product requirements: The requirements behind the build"/></a> <a href="docs/04_TARGET_ARCHITECTURE.md"><img src="assets/readme/doc-3.svg" width="430" alt="Target architecture: How the components fit together"/></a> <a href="docs/14_EXECUTION_ROADMAP.md"><img src="assets/readme/doc-4.svg" width="430" alt="Execution roadmap: The next engineering steps"/></a> <a href="docs/15_DEFINITION_OF_DONE.md"><img src="assets/readme/doc-5.svg" width="430" alt="Definition of done: What completion must demonstrate"/></a></p>
 
-## Working rules
+<details>
+<summary><strong>Intended product experience and boundaries</strong></summary>
+
+The intended experience is a Windows expert beside the user: voice or text questions, grounded screen guidance, safe delegated tasks, and a choice of local or cloud processing where supported. Installing without manually configuring Python, model servers or API keys is a product goal, not the current developer setup.
+
+Whisper is not intended to bypass Windows security, silently record users, infer exact click coordinates without grounding, or ship unrestricted autonomous actions before they are reliable.
+
+</details>
+
+<details>
+<summary><strong>Engineering principles</strong></summary>
 
 1. Never label a roadmap item complete until its acceptance criteria pass.
 2. Prefer semantic Windows UI Automation actions over coordinate clicks.
@@ -91,10 +110,20 @@ Start with [docs/README.md](docs/README.md). The most important working document
 5. Maintain a useful cloud fallback for computers that cannot run local models well when the selected processing mode permits cloud use.
 6. Measure latency, grounding accuracy, task success, crash rate, and retention.
 
-## Repository hygiene
+</details>
+
+<details>
+<summary><strong>Repository hygiene and verification</strong></summary>
 
 Vision installation versus inference verification, monitor testing, and remaining
 desktop account/signing gates are documented in
 [the verification guide](docs/23-vision-and-desktop-verification.md).
 
 Git is initialized on `main`. Generated `bin/` and `obj/` files, the local `.dotnet/` installation, installers, downloaded model weights, logs, databases, and secrets are ignored. Existing local artifacts may remain on disk but must never be committed; third-party binaries still need a verified acquisition and license-record process before release.
+
+
+</details>
+
+<p><picture><source media="(max-width: 600px)" srcset="assets/readme/closing-mobile.svg"/><img src="assets/readme/closing.svg" width="100%" alt="Whisper: Less friction. More understanding. Built by Adil Sukumar. Developer prototype."/></picture></p>
+
+<p align="center"><a href="https://github.com/adilsukumar/Whisper-for-Windows/issues">Discuss an idea</a> · <a href="docs/14_EXECUTION_ROADMAP.md">Read the roadmap</a> · <a href="https://www.adilsukumar.xyz/">Meet the builder</a></p>
