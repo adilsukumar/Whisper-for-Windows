@@ -6,11 +6,15 @@ Whisper is my Windows-native assistant for asking questions about the software i
 
 **Status: local developer build.** This repository is a working prototype, with important release requirements still open. It is not a commercial release or a finished, one-click installer.
 
+<a id="what-whisper-does"></a>
+
 ## <img src="assets/readme/icon-voice.svg" width="30" height="30" alt=""/> What Whisper does
 
 <p><picture><source media="(max-width: 600px)" srcset="assets/readme/capabilities-mobile.svg"/><img src="assets/readme/capabilities.svg" width="100%" alt="Ask naturally, add consented context, get guidance and stay in control."/></picture></p>
 
 <p><picture><source media="(max-width: 600px)" srcset="assets/readme/flow-mobile.svg"/><img src="assets/readme/flow.svg" width="100%" alt="Conceptual flow: ask by voice or text, provide consented screen context, and receive an answer with on-screen guidance."/></picture></p>
+
+<a id="current-status"></a>
 
 ## <img src="assets/readme/icon-status.svg" width="30" height="30" alt=""/> Current status
 
@@ -38,6 +42,8 @@ See the [release-status document](docs/25-release-status-and-account-enforcement
 <p><picture><source media="(max-width: 600px)" srcset="assets/readme/architecture-mobile.svg"/><img src="assets/readme/architecture.svg" width="100%" alt="Component map: WPF desktop client, Python runtime, Ollama and speech, plus the separate accounts service."/></picture></p>
 
 See the [accounts-service README](WhisperAccounts/README.md) for its implementation and release limitations.
+
+<a id="developer-setup"></a>
 
 ## <img src="assets/readme/icon-terminal.svg" width="30" height="30" alt=""/> Developer setup
 
@@ -84,6 +90,8 @@ After dependencies are installed, use the unified development entry point:
 The tray menu provides Ask, Pause/Resume, Settings, and Quit. Screen sharing is off by default: text questions have a per-question checkbox; voice questions use the explicit Settings preference. Settings also control spoken responses and reduced motion, and offer a read-only local runtime/model check. Pause cancels capture and active turns; resuming does not automatically record.
 
 The separate [accounts service](WhisperAccounts/README.md) implements Google-verified owner administration and complimentary lifetime grants. It has local automated security coverage, but is not deployed or wired into desktop commercial enforcement. Google OAuth configuration, production hosting, billing webhooks, desktop authentication, and independent security review remain launch gates.
+
+<a id="documentation"></a>
 
 ## <img src="assets/readme/icon-docs.svg" width="30" height="30" alt=""/> Documentation
 
